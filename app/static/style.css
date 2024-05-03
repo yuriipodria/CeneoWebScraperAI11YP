@@ -1,3 +1,5 @@
-h1 {
-    color: #555
-}
+@import url(./utils/variables.css);
+@import url(./blocks/page.css);
+@import url(./blocks/header.css);
+@import url(./blocks/section.css);
+@import url(./blocks/footer.css);

@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="page" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Ceneo Web Scraper</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Ceneo Web Scraper</title>
 </head>
-<body>
-    <header>
-        <h1>Ceneo.pl Web Scraper</h1>
-    </header>
+<body class="page__body">
+  <header class="header">
+    <h1 class="header__header">Ceneo.pl Web Scraper</h1>
+  </header>
 
-    <section>
-        {% block content %}
-            <p>This is base file</p>
-        {% endblock %}
-    </section>
+  <section class="section">
+    {% block content %}
+      <p class="section__description">This is base file</p>
+    {% endblock %}
+  </section>
 
-    <footer>
-        yurii podria
-    </footer>
+  <footer class="footer">
+    <p class="footer__author-name">Yurii Podria</p>
+    <p class="footer__university">University of economics in Cracow</p>
+  </footer>
 </body>
 </html>
