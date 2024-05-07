@@ -1,0 +1,14 @@
+.form__row {
+    margin-block-end: 10px;
+}
+
+.form__requirement {
+    display: inline-block;
+    margin-inline-start: 10px;
+    font-size: 13px;
+}
+
+.form__button {
+    height: 20px;
+    width: 100px;
+}

@@ -1,4 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-  <p class="section__description">This is extract file</p>
+  {% if error is defined %}
+    <strong class="section__error">Error! {{error}}</strong> 
+  {% endif %}
+  <form class="form" method="POST" action="{{url_for('extract')}}">
+    <div class="form__row">
+      <label for="product_id" class="form__label">Product code</label>
+    </div>
+
+    <div class="form__row">
+      <input
+        class="form__control"
+        type="text"
+        name="product_id"
+        placeholder="Enter product code here"
+        id="product_id"
+        required
+      >
+
+      <span class="form__requirement">Must be 8-10 digits long</span>
+    </div>
+
+    <div class="form__row">
+      <button type="submit" class="form__button">Extract</button>
+    </div>
+  </form>
 {% endblock %}

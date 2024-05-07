@@ -1,5 +1,6 @@
-p, h1 {
+p, h1, ul {
   margin: 0;
+  padding: 0;
 }
 
 .page__body {

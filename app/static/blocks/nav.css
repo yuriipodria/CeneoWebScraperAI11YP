@@ -1,0 +1,19 @@
+.nav__list {
+    display: flex;
+    justify-content: left;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav__link {
+    color: #000;
+    text-decoration: none;
+}
+
+.nav__item {
+    transition: .2s;
+}
+
+.nav__item:hover {
+    transform: scale(1.2);
+}
