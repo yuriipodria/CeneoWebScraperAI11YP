@@ -5,7 +5,6 @@ def extract(ancestor, selector, attribute=None, return_list=False):
         if attribute:
             return [tag[attribute] for tag in ancestor.select(selector)]
         return [tag.get_text().strip() for tag in ancestor.select(selector)]
-
     if selector:
         if attribute:
             try:
@@ -16,7 +15,6 @@ def extract(ancestor, selector, attribute=None, return_list=False):
             return ancestor.select_one(selector).get_text().strip()
         except AttributeError:
             return None
-    
     if attribute:
         return ancestor[attribute]
     return ancestor.get_text().strip()
@@ -28,12 +26,19 @@ def rate(score):
 def recommend(recommendation):
     return True if recommendation == "Polecam" else False if recommendation == "Nie polecam" else None
 
+
 def translate(text, from_lang = "pl", to_lang = "en"):
-    if text:
-        if isinstance(text, list):
-            return [GoogleTranslator(source=from_lang, target=to_lang).translate(t) for t in text]
-        return GoogleTranslator(source=from_lang, target=to_lang).translate(text)
-    return None
+  if text:
+    if isinstance(text, list):
+      return {
+        from_lang: text,
+        to_lang: [GoogleTranslator(source=from_lang, target=to_lang).translate(t) for t in text]
+      }
+    return {
+      from_lang: text,
+      to_lang: GoogleTranslator(source=from_lang, target=to_lang).translate(text)
+    }
+  return  None
 
 selectors = {
     "opinion_id": [None, "data-entry-id"],
