@@ -135,6 +135,7 @@ def download_json(product_id):
 @app.route('/download/csv/<product_id>')
 def download_csv(product_id):
   opinions = pd.read_json(f"app/opinions/{product_id}.json")
+  opinions = pd.concat([opinions.drop(['content'], axis=1), opinions['content'].apply(pd.Series)], axis=1)
   response_stream = BytesIO(opinions.to_csv().encode())
   return send_file(response_stream, mimetype='text/csv', download_name=f'{product_id}.csv', as_attachment=True)
 
