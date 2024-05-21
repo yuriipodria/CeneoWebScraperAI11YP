@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-  {% for product in products %}
-    <div class="products__card">{{product}}</div>
-  {% endfor %}
+  <div class="products">
+    {% for product in products %}
+      <div class="products__card card">
+        <p class="card__field"><strong>Product ID:</strong> {{product.product_id}}</p>
+        <p class="card__field"><strong>Product name:</strong> <a href="{{url_for('product', product_id = product.product_id)}}" class="card__link">{{product.product_name}}</a></p>
+        <p class="card__field"><strong>Opinions count:</strong> {{product.opinions_count}}</p>
+        <p class="card__field"><strong>Pros count:</strong> {{product.pros_count}}</p>
+        <p class="card__field"><strong>Cons count:</strong> {{product.cons_count}}</p>
+        <p class="card__field"><strong>Average score:</strong> {{product.average_score}}</p>
+        <p class="card__field"><strong>Score distribution:</strong></p>
+        {% for score in product.score_distribution %}
+          <p class="card__field"><strong>{{score}}:</strong> {{product.score_distribution[score]}}</p>
+        {% endfor %}
+        <p class="card__field"><strong>Recommendation distribution:</strong></p>
+        <p class="card__field"><strong>Recommended:</strong> {{product.recommendation_distribution.true}}</p>
+        <p class="card__field"><strong>Not recommended:</strong> {{product.recommendation_distribution.false}}</p>
+        <p class="card__field"><strong>No information:</strong> {{product.recommendation_distribution.NaN}}</p>
+        <p class="card__field"><a href="{{url_for('download_json', product_id = product.product_id)}}" class="card__link"><strong>JSON</strong></a></p>
+        <p class="card__field"><a href="{{url_for('download_csv', product_id = product.product_id)}}" class="card__link"><strong>CSV</strong></a></p>
+        <p class="card__field"><a href="{{url_for('download_xlsx', product_id = product.product_id)}}" class="card__link"><strong>XLSX</strong></a></p>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
