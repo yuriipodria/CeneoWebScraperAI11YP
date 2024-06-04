@@ -126,7 +126,12 @@ def author():
 
 @app.route('/product/<product_id>')
 def product(product_id):
-  return render_template("product.html", product_id=product_id)
+  opinions = pd.read_json(f"app/opinions/{product_id}.json")
+  return render_template("product.html", product_id=product_id, opinions=opinions.to_html(table_id="opinions"))
+
+@app.route('/charts/<product_id>')
+def charts(product_id):
+  return render_template("charts.html", product_id=product_id)
 
 @app.route('/download/json/<product_id>')
 def download_json(product_id):

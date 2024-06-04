@@ -1,8 +1,8 @@
 .footer {
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   display: flex;
-  bottom: -20px;
+  bottom: 0;
   width: 100%;
   height: var(--footer-height);
   background-color: var(--background-color);

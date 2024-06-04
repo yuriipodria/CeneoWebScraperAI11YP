@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
   <title>Ceneo Web Scraper</title>
 </head>
 <body class="page__body">
@@ -44,5 +47,7 @@
     <p class="footer__author-name">Yurii Podria</p>
     <p class="footer__university">University of economics in Cracow</p>
   </footer>
+  {% block scripts %}
+  {% endblock %}
 </body>
 </html>

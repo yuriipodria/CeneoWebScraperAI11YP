@@ -3,6 +3,11 @@ p, h1, ul {
   padding: 0;
 }
 
+table, th, td {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
 .page__body {
   position: relative;
   font-family: 'Bitter', serif;
