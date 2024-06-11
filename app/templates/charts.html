@@ -2,4 +2,8 @@
 {% block content %}
   <p class="section__description">This is {{product_id}} product file</p>
   <a type="button" href="{{url_for('product', product_id = product_id)}}">Opinions</a>
+  <div class="section__charts">
+    <img class="section__chart" src="{{url_for('static', filename='charts/' + product_id + '_score.png')}}" alt="histogram of rates">
+    <img class="section__chart" src="{{url_for('static', filename='charts/' + product_id + '_recommendation.png')}}" alt="shares of recommendations">
+  </div>
 {% endblock %}

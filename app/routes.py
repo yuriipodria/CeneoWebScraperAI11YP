@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from matplotlib import pyplot as plt
 import matplotlib
 import xlsxwriter
-matplotlib.use('Agg') 
+matplotlib.use('Agg')
 
 @app.route('/')
 @app.route('/index')
@@ -78,13 +78,13 @@ def extract():
           'score_distribution': score_distribution.to_dict(),
           'recommendation_distribution': recommendation_distribution.to_dict()
         }
-        if not os.path.exists("app/products"):
-          os.mkdir("app/products")
+        if not os.path.exists("app/static"):
+          os.mkdir("app/static")
+        if not os.path.exists("app/static/charts"):
+          os.mkdir("app/static/charts")
         jf = open(f"app/products/{product_id}.json", "w", encoding="UTF-8")
         json.dump(product, jf, indent=4, ensure_ascii=False)
         jf.close()
-        if not os.path.exists("app/charts"):
-          os.mkdir("app/charts")
         fig, ax = plt.subplots()
         score_distribution.plot.bar(color = "hotpink")
         plt.xlabel("Number of stars")
@@ -92,7 +92,7 @@ def extract():
         plt.title(f"Score histogram for {product_name}")
         plt.xticks(rotation = 0)
         ax.bar_label(ax.containers[0], label_type='edge', fmt = lambda l: int(l) if l else "")
-        plt.savefig(f"app/charts/{product_id}_score.png")
+        plt.savefig(f"app/static/charts/{product_id}_score.png")
         plt.close()
         recommendation_distribution.plot.pie(
           labels = ["Recommend", "Not recommend", "Indifferent"],
@@ -101,7 +101,7 @@ def extract():
           autopct = lambda l: "{:1.1f}%".format(l) if l else ""
         )
         plt.title(f"Recommendations shares for {product_name}")
-        plt.savefig(f"app/charts/{product_id}_recommendation.png")
+        plt.savefig(f"app/static/ charts/{product_id}_recommendation.png")
         return redirect(url_for('product', product_id = product_id))
       return render_template('extract.html', error = "Product has no opinions")
     return render_template('extract.html', error = "Product does not exist")
