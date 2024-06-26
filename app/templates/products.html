@@ -2,7 +2,7 @@
 {% block content %}
   <div class="products">
     {% for product in products %}
-      <div class="products__card card">
+      <div class="products__card">
         <p class="card__field"><strong>Product ID:</strong> {{product.product_id}}</p>
         <p class="card__field"><strong>Product name:</strong> <a href="{{url_for('product', product_id = product.product_id)}}" class="card__link">{{product.product_name}}</a></p>
         <p class="card__field"><strong>Opinions count:</strong> {{product.opinions_count}}</p>

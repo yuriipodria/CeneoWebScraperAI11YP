@@ -1,6 +1,11 @@
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 75px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+.products__card {
+    background-color: #ddd;
+    border-radius: 8px;
+    padding: 10px;
 }

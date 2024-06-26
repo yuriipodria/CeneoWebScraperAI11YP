@@ -101,7 +101,7 @@ def extract():
           autopct = lambda l: "{:1.1f}%".format(l) if l else ""
         )
         plt.title(f"Recommendations shares for {product_name}")
-        plt.savefig(f"app/static/ charts/{product_id}_recommendation.png")
+        plt.savefig(f"app/static/charts/{product_id}_recommendation.png")
         return redirect(url_for('product', product_id = product_id))
       return render_template('extract.html', error = "Product has no opinions")
     return render_template('extract.html', error = "Product does not exist")
