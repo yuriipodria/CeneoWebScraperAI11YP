@@ -19,7 +19,7 @@ class Product:
     opinions_count = opinions_df.index.size
     pros_count = opinions_df.pros.apply(lambda p: None if not p else p).count()
     cons_count = opinions_df.cons.apply(lambda c: None if not c else c).count()
-    average_score = opinions_df.score.mean()
+    average_score = round(opinions_df.score.mean(), 2)
     score_distribution = opinions_df.score.value_counts().reindex(np.arange(0,5.5,0.5), fill_value = 0)
     recommendation_distribution = opinions_df.recommendation.value_counts(dropna=False).reindex([True, False, np.nan], fill_value = 0)
 

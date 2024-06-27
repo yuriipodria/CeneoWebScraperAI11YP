@@ -28,11 +28,9 @@ def extract():
       return render_template('extract.html', error = "Product does not exist")
 
     if scraper.opinions:
-      product_name = scraper.product_name
-
       scraper.save_opinions_to_json()
 
-      product = Product(product_id, product_name, scraper.opinions)
+      product = Product(product_id, scraper.product_name, scraper.opinions)
       product.generate_charts()
 
       return redirect(url_for('product', product_id=product_id))
@@ -46,9 +44,8 @@ def products():
   products_list = []
 
   if os.path.exists("app/opinions"):
-    products = [filename.split(".")[0] for filename in os.listdir("app/opinions")]
-    for product_id in products:
-      with open(f"app/products/{product_id}.json", "r", encoding="UTF-8") as jf:
+    for product_name in os.listdir("app/opinions"):
+      with open(f"app/products/{product_name}", "r", encoding="UTF-8") as jf:
         product_info = json.load(jf)
         products_list.append(product_info)
 

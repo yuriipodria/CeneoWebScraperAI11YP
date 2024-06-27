@@ -1,6 +1,7 @@
 :root {
   --background-color: #bbb;
   --header-font-color: #333;
+  --products-card-color: #ddd;
   --footer-height: 25px;
   --nav-item-height: 60px;
 }

@@ -5,7 +5,7 @@
 }
 
 .products__card {
-    background-color: #ddd;
+    background-color: var(--products-card-color);
     border-radius: 8px;
     padding: 10px;
 }

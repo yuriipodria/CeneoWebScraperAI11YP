@@ -3,6 +3,7 @@ import json
 from app.Opinion import Opinion
 from bs4 import BeautifulSoup
 from app import utils
+import os
 
 class Scraper:
   def __init__(self, product_id):
@@ -42,5 +43,7 @@ class Scraper:
             self.url = None
 
   def save_opinions_to_json(self):
+    if not os.path.exists("app/opinions"):
+      os.mkdir("app/opinions")
     with open(f"app/opinions/{self.product_id}.json", "w", encoding="UTF-8") as jf:
       json.dump([opinion.to_dict() for opinion in self.opinions], jf, indent=4, ensure_ascii=False)
