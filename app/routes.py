@@ -51,7 +51,6 @@ def products():
 
   return render_template("products.html", products=products_list)
 
-
 @app.route('/author')
 def author():
   return render_template("author.html")
@@ -67,26 +66,25 @@ def charts(product_id):
 
 @app.route('/download/json/<product_id>')
 def download_json(product_id):
-    opinions_file = f"opinions/{product_id}.json"
-    return send_file(opinions_file, mimetype='text/json', download_name=f'{product_id}.json', as_attachment=True)
+  opinions_file = f"opinions/{product_id}.json"
+  return send_file(opinions_file, mimetype='text/json', download_name=f'{product_id}.json', as_attachment=True)
 
 @app.route('/download/csv/<product_id>')
-@app.route('/download/csv/<product_id>')
 def download_csv(product_id):
-    opinions_file = f"app/opinions/{product_id}.json"
-    opinions_data = pd.read_json(opinions_file)
-    opinions_data = pd.concat([opinions_data.drop(['content'], axis=1), opinions_data['content'].apply(pd.Series)], axis=1)
-    response_stream = BytesIO()
-    opinions_data.to_csv(response_stream, index=False)
-    response_stream.seek(0)
-    return send_file(response_stream, mimetype='text/csv', download_name=f'{product_id}.csv', as_attachment=True)
+  opinions_file = f"app/opinions/{product_id}.json"
+  opinions_data = pd.read_json(opinions_file)
+  opinions_data = pd.concat([opinions_data.drop(['content'], axis=1), opinions_data['content'].apply(pd.Series)], axis=1)
+  response_stream = BytesIO()
+  opinions_data.to_csv(response_stream, index=False)
+  response_stream.seek(0)
+  return send_file(response_stream, mimetype='text/csv', download_name=f'{product_id}.csv', as_attachment=True)
 
 @app.route('/download/xlsx/<product_id>')
 def download_xlsx(product_id):
-    opinions_file = f"app/opinions/{product_id}.json"
-    opinions_data = pd.read_json(opinions_file)
-    buffer = BytesIO()
-    with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
-        opinions_data.to_excel(writer, index=False)
-    buffer.seek(0)
-    return send_file(buffer, mimetype='text/xlsx', download_name=f'{product_id}.xlsx', as_attachment=True)
+  opinions_file = f"app/opinions/{product_id}.json"
+  opinions_data = pd.read_json(opinions_file)
+  buffer = BytesIO()
+  with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
+    opinions_data.to_excel(writer, index=False)
+  buffer.seek(0)
+  return send_file(buffer, mimetype='text/xlsx', download_name=f'{product_id}.xlsx', as_attachment=True)
