@@ -1,6 +1,6 @@
 from app import app
-from app.Scraper import Scraper
-from app.Product import Product
+from app.modules.Scraper import Scraper
+from app.modules.Product import Product
 from flask import render_template, request, redirect, url_for, send_file
 import requests
 import os

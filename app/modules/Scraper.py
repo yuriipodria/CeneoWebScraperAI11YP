@@ -1,6 +1,6 @@
 import requests
 import json
-from app.Opinion import Opinion
+from app.modules.Opinion import Opinion
 from bs4 import BeautifulSoup
 from app import utils
 import os
